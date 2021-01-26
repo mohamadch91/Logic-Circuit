@@ -28,16 +28,16 @@ module co2Detector(x,Z,CLK,RST);
          if (~RST) state = S0;  //Initialize to state S0
 	    else
 case (state)
-            S0: if (x)  state = S0; else state = S1; 
-            S1: if (x)  state = S2; else state = S1;   
-            S2: if (x)  state = S3; else state = S1;
-			   S3: if (x)  state = S1; else state = S4;
-			   S4: if (x)  state = S5; else state = S1; 
-			   S5: if (x)  state = S6; else state = S1; 
-			   S6: if (x)  state = S1; else state = S7;
-		      S7: if (x)  state = S8; else state = S1; 
-			   S8: if (x)  state = S9; else state = S1; 
-				S9: if (x)  state = S0; else state = S1; 
+            S0: if (~x)  state = S0; else state = S1; 
+            S1: if (~x)  state = S2; else state = S1;   
+            S2: if (~x)  state = S3; else state = S1;
+			   S3: if (~x)  state = S1; else state = S4;
+			   S4: if (~x)  state = S5; else state = S1; 
+			   S5: if (~x)  state = S6; else state = S1; 
+			   S6: if (~x)  state = S1; else state = S7;
+		      S7: if (~x)  state = S8; else state = S1; 
+			   S8: if (~x)  state = S9; else state = S1; 
+				S9: if (~x)  state = S0; else state = S1; 
          endcase
 		assign
 			Z=state[3]&state[0];
