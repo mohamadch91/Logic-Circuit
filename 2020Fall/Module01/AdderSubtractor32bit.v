@@ -28,7 +28,16 @@ module AdderSubtractor32x32 (
 );
 	// if sel = 0 then add else subtract
 	/* write your code here */
-	
+	wire [31:0] cin;
+	 assign cin[0] = sel;
+	 genvar i;
+	 
+	 generate
+		 for ( i = 0; i < 31; i = i + 1 )
+		 begin : loop
+				FA fa(.A(A[i]), .B(B[i]^sel), .cin(cin[i]), .sum(S[i]), .co(cin[i+1]));
+		 end
+	 endgenerate
 	/* write your code here */
 
 endmodule
