@@ -20,6 +20,7 @@
 -----------------------------------------------------------*/
 `timescale 1 ns/1 ns 
 
+
 module TemperatureCalculator (
 	input  [31:0] tc_base  , // base [environment degree ]
 	input  [ 7:0] tc_ref   , // ref  [system work voltage]
@@ -27,8 +28,27 @@ module TemperatureCalculator (
 	output [31:0] tempc      // temp [temperature celsius]
 );
 
+<<<<<<< Updated upstream
 	/* write your code here */
+=======
+	wire [7:0] tempRef;
+	assign tempRef=(tc_ref[7]?-tc_ref:tc_ref);
+	//wire [31:0] tempbase;
+	//assign tempbase=~(tc_base-1);
+	//assign tempbase=(tc_base[31]?-tc_base:tc_base);
 	
-	/* write your code here */
+	wire [15:0] out;
+	Multiplier8x8 multiplier_first(.A(tempRef[7:0]),.B(tempRef[7:0]),.P(out[15:0]));
+	wire [31:0] out1;
+	Multiplier16x16 multiplier_second(.A(out[15:0]),.B({1'b0,adc_data[14:0]}),.P(out1[31:0]));
+	wire  [31:0] out2;
+  wire [31:0] ttempc;
+	assign out2=out1/64;
+	// division div(.A(out1[31:0]),.B({32'b00000000000000000000000000010000}),.Res(out2[31:0]));
+	AdderSubtractor32x32 adder32x32(.A(tc_base[31:0]),.B(out2[31:0]),.sel(adc_data[15]),.S(tempc[31:0]));
+		//assign tempc=~ttempc+1;
+>>>>>>> Stashed changes
+	
 
 endmodule
+

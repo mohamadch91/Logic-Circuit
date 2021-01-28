@@ -1,0 +1,1 @@
+-intstyle "ise" -incremental -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -o "M:/uni/thirdsummestur/az manteghi/final proj/phase 1/part 1/temperature_calculator_test_isim_beh.exe" -prj "M:/uni/thirdsummestur/az manteghi/final proj/phase 1/part 1/temperature_calculator_test_beh.prj" "work.temperature_calculator_test" "work.glbl" 
