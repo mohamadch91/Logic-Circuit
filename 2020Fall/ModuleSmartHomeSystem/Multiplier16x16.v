@@ -15,28 +15,20 @@
 --*/
 
 /*-----------------------------------------------------------
----  Module Name: Gas Detector Sensor
----  Description: Module2:
+---  Module Name: 16 Bit Multiplier
+---  Description: Module1: 
 -----------------------------------------------------------*/
 `timescale 1 ns/1 ns
 
-module GasDetectorSensor (
-	input        arst     , // async reset
-	input        clk      , // clock posedge
-	input        din      , // input data 
-	output [2:0] dout       // output data
+module Multiplier16x16 (
+	input  [15:0] A , // input  [unsigned 16 bits]
+	input  [15:0] B , // input  [unsigned 16 bits]
+	output [31:0] P   // output [unsigned 32 bits]
 );
 
-<<<<<<< Updated upstream
-	/* write your code here */
+assign P=A*B;
+	
 	
 	/* write your code here */
-	ch4Detector first(.x(din),.Z(dout[0]),.CLK(clk),.RST(arst));
-	coDetector second(.x(din),.Z(dout[1]),.CLK(clk),.RST(arst));
-	co2Detector third(.x(din),.Z(dout[2]),.CLK(clk),.RST(arst));
-=======
-	ch4Detector CH4(.x(din),.Z(dout[0]),.CLK(clk),.RST(arst));
-	coDetector CO(.x(din),.Z(dout[1]),.CLK(clk),.RST(arst));
-	co2Detector CO2(.x(din),.Z(dout[2]),.CLK(clk),.RST(arst));
->>>>>>> Stashed changes
+
 endmodule

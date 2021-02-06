@@ -15,28 +15,40 @@
 --*/
 
 /*-----------------------------------------------------------
----  Module Name: Gas Detector Sensor
----  Description: Module2:
+---  Module Name: 32 Bit Adder/Subtractor
+---  Description: Module1: 
 -----------------------------------------------------------*/
 `timescale 1 ns/1 ns
 
-module GasDetectorSensor (
-	input        arst     , // async reset
-	input        clk      , // clock posedge
-	input        din      , // input data 
-	output [2:0] dout       // output data
+module AdderSubtractor32x32 (
+	input  [31:0] A    , // input  [2's complement 32 bits]
+	input  [31:0] B    , // input  [2's complement 32 bits]
+	input         sel  , // input  [add:sel=0 || sub:sel=1] 
+	output [31:0] S      // output [2's complement 32 bits]
 );
+	// if sel = 0 then add else subtract
+	/* write your code here */
+/*	wire [31:0] cin;
+	 assign cin[0] = sel;
+	 genvar i;
+	 
+	 generate
+		 for ( i = 0; i < 31; i = i + 1 )
+		 begin : loop
+				FA fa(.A(A[i]), .B(B[i]^sel), .cin(cin[i]), .sum(S[i]), .co(cin[i+1]));
+		 end
+	 endgenerate
+	/* write your code here */
 
-<<<<<<< Updated upstream
-	/* write your code here */
-	
-	/* write your code here */
-	ch4Detector first(.x(din),.Z(dout[0]),.CLK(clk),.RST(arst));
-	coDetector second(.x(din),.Z(dout[1]),.CLK(clk),.RST(arst));
-	co2Detector third(.x(din),.Z(dout[2]),.CLK(clk),.RST(arst));
-=======
-	ch4Detector CH4(.x(din),.Z(dout[0]),.CLK(clk),.RST(arst));
-	coDetector CO(.x(din),.Z(dout[1]),.CLK(clk),.RST(arst));
-	co2Detector CO2(.x(din),.Z(dout[2]),.CLK(clk),.RST(arst));
->>>>>>> Stashed changes
+		reg [31:0] s2;
+		always @(sel or A or B)
+		if(sel)
+			begin
+				s2=A-B;
+			end
+		else
+			begin
+				s2=A+B;
+			end
+		assign S=s2;
 endmodule

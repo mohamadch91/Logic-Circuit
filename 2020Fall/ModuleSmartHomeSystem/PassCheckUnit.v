@@ -15,28 +15,19 @@
 --*/
 
 /*-----------------------------------------------------------
----  Module Name: Gas Detector Sensor
----  Description: Module2:
+---  Module Name: Password Checker Unit
+---  Description: Module7: 
 -----------------------------------------------------------*/
 `timescale 1 ns/1 ns
 
-module GasDetectorSensor (
-	input        arst     , // async reset
-	input        clk      , // clock posedge
-	input        din      , // input data 
-	output [2:0] dout       // output data
+module PassCheckUnit (
+	input  [ 1:0] pass   , // input  [user   password]
+	input  [ 1:0] key    , // input  [system password]
+	output        equal    // output [(pass==key) : 1]
 );
 
-<<<<<<< Updated upstream
 	/* write your code here */
-	
+	assign equal = (pass == key) ? 1'b1: 1'b0;
 	/* write your code here */
-	ch4Detector first(.x(din),.Z(dout[0]),.CLK(clk),.RST(arst));
-	coDetector second(.x(din),.Z(dout[1]),.CLK(clk),.RST(arst));
-	co2Detector third(.x(din),.Z(dout[2]),.CLK(clk),.RST(arst));
-=======
-	ch4Detector CH4(.x(din),.Z(dout[0]),.CLK(clk),.RST(arst));
-	coDetector CO(.x(din),.Z(dout[1]),.CLK(clk),.RST(arst));
-	co2Detector CO2(.x(din),.Z(dout[2]),.CLK(clk),.RST(arst));
->>>>>>> Stashed changes
+
 endmodule

@@ -28,7 +28,11 @@ module AdderSubtractor32x32 (
 );
 	// if sel = 0 then add else subtract
 	/* write your code here */
+<<<<<<< Updated upstream
 	wire [31:0] cin;
+=======
+/*	wire [31:0] cin;
+>>>>>>> Stashed changes
 	 assign cin[0] = sel;
 	 genvar i;
 	 
