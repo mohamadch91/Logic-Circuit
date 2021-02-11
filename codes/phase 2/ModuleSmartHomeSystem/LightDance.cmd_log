@@ -1,0 +1,3 @@
+xst -intstyle ise -ifn "M:/uni/thirdsummestur/az manteghi/final proj/phase 2/ModuleSmartHomeSystem/LightDance.xst" -ofn "M:/uni/thirdsummestur/az manteghi/final proj/phase 2/ModuleSmartHomeSystem/LightDance.syr" 
+xst -intstyle ise -ifn "M:/uni/thirdsummestur/az manteghi/final proj/phase 2/ModuleSmartHomeSystem/LightDance.xst" -ofn "M:/uni/thirdsummestur/az manteghi/final proj/phase 2/ModuleSmartHomeSystem/LightDance.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xa7a100t-csg324-2I "LightDance.ngc" LightDance.ngd  
